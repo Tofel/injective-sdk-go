@@ -3,15 +3,17 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+
 	"github.com/InjectiveLabs/sdk-go/client/common"
 	exchangeclient "github.com/InjectiveLabs/sdk-go/client/exchange"
 	derivativeExchangePB "github.com/InjectiveLabs/sdk-go/exchange/derivative_exchange_rpc/pb"
-	"os"
 
 	//derivativeExchangePB "github.com/InjectiveLabs/sdk-go/exchange/derivative_exchange_rpc/pb"
-	spotExchangePB "github.com/InjectiveLabs/sdk-go/exchange/spot_exchange_rpc/pb"
 	"math"
 	"strconv"
+
+	spotExchangePB "github.com/InjectiveLabs/sdk-go/exchange/spot_exchange_rpc/pb"
 )
 
 func find(slice []string, val string) bool {
@@ -143,9 +145,11 @@ func FetchDenom(network common.Network) {
 
 func main() {
 	devnet := common.LoadNetwork("devnet", "")
-	testnet := common.LoadNetwork("testnet", "k8s")
-	mainnet := common.LoadNetwork("mainnet", "k8s")
+	devnet1 := common.LoadNetwork("devnet-1", "")
+	// testnet := common.LoadNetwork("testnet", "k8s")
+	// mainnet := common.LoadNetwork("mainnet", "k8s")
 	FetchDenom(devnet)
-	FetchDenom(testnet)
-	FetchDenom(mainnet)
+	FetchDenom(devnet1)
+	// FetchDenom(testnet)
+	// FetchDenom(mainnet)
 }
